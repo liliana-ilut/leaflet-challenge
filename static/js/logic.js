@@ -1,9 +1,9 @@
 // store the url
 
-const url= "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
+const url= "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson";
 // define the sizes and colors for markers based on magnitude
 function markerSize(mag) {
-    return mag*30000;
+    return mag*300;
 };
 
 function markerColor(mag) {
@@ -27,9 +27,9 @@ d3.json(url, function(response) {
     // verify if the url is working
     console.log(response);
     // get the feature data from the url
-    var createFeatures= response.features;
+    var features= response.features;
     // check if it's printing
-    console.log(createFeatures);
+    console.log(features);
 });
 
 function createFeatures(quake) {
@@ -78,7 +78,7 @@ function createMap(quakes) {
   var myMap = L.map("mapid", {
     center: [31.57853542647338,-99.580078125],
     zoom: 3,
-    layers: [satelitemap, quakes]
+    layers: [satelitemap, Earthquakes]
   });
 
   // Create a layer control
