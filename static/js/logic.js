@@ -1,6 +1,6 @@
 // store the url
 
-var url= "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
+const url= "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
 // define the sizes and colors for markers based on magnitude
 function markerSize(mag) {
     return mag*30000;
@@ -24,5 +24,10 @@ function markerColor(mag) {
 
 // call the url
 d3.json(url, function(response) {
+    // verify if the url is working
     console.log(response);
+    // get the feature data from the url
+    var createFeatures= response.features;
+    // check if it's printing
+    console.log(createFeatures);
 });
