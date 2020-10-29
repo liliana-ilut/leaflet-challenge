@@ -11,7 +11,8 @@ var map = L.map("mapid", {
     accessToken: API_KEY
   }).addTo(map);
   
-  var url_query = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
+  // var url_query = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
+  var url_query ="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
   d3.json(url_query, function(data){
     function styleInfo(feature) {
       return {
