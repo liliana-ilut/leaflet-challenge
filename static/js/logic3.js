@@ -12,13 +12,13 @@ var map = L.map("mapid", {
   }).addTo(map);
   
   // var url_query = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
-  var url_query ="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
+  var url_query ="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
   d3.json(url_query, function(data){
     function styleInfo(feature) {
       return {
         opacity: 1,
         fillOpacity: 1,
-        fillColor:getColor(feature.geometry.coordinates[2]),
+        fillColor:markerColor(feature.geometry.coordinates[2]),
         color: "#000000",
         radius: getRadius(feature.properties.mag),
         stroke: true,
@@ -45,23 +45,23 @@ var map = L.map("mapid", {
       }
     }).addTo(map)
   
-    function getColor(d) {
-      switch (true){
-      case d > 90:
-        return "#EE3416";
-        case d > 70:
-        return "#E14A1E";
-        case d > 50:
-        return "#E16E1E";
-        case d > 30:
-        return "#FFC300";
-        case d > 10:
-        return "#B2E11E";
-        default:
-        return "#B9F09A";
-    }
-  }
   
+  function markerColor(mag) {
+    if (mag <= 1) {
+        return "#ADFF2F";
+    } else if (mag <= 2) {
+        return "#9ACD32";
+    } else if (mag <= 3) {
+        return "#FFFF00";
+    } else if (mag <= 4) {
+        return "#ffd700";
+    } else if (mag <= 5) {
+        return "#FFA500";
+    } else {
+        return "#FF0000";
+    };
+};
+
     var legend = L.control({
       position: "bottomright"
     });
@@ -70,7 +70,7 @@ var map = L.map("mapid", {
       var div = L.DomUtil.create("div", "legend");
   
       var grades = [0,1,2,3,4,5]
-      var colors = ["#B9F09A","#B2E11E","#FFC300","#E16E1E","#E14A1E","#EE3416"]
+      var colors = ["#ADFF2F","#9ACD32","#FFFF00","#ffd700","#FFA500","#FF0000"]
       
       for (var i = 0; i < grades.length; i++) {
   
