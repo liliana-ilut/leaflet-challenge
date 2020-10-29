@@ -5,11 +5,6 @@ const url= "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significan
 function markerSize(mag) {
     return mag*300;
 };
-const url= "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson";
-// define the sizes and colors for markers based on magnitude
-function markerSize(mag) {
-    return mag*300;
-};
 
 function markerColor(mag) {
     if (mag <= 1) {
