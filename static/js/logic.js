@@ -1,6 +1,6 @@
 // store the url
 
-const url= "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson";
+var url= "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson";
 // define the sizes and colors for markers based on magnitude
 function markerSize(mag) {
     return mag*300;

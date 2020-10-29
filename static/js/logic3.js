@@ -1,5 +1,5 @@
 var map = L.map("mapid", {
-    center: [37.09, -95.71],
+    center: [31.57, -99.58],
     zoom: 3,
     
   });
@@ -11,10 +11,12 @@ var map = L.map("mapid", {
     accessToken: API_KEY
   }).addTo(map);
   
-  // var url_query = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
+  // call the url--I chose all week eartquakes
   var url_query ="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
   d3.json(url_query, function(data){
-    function styleInfo(feature) {
+    // check if any data is displayed using console.log
+    console.log(data);
+    function markerInfo(feature) {
       return {
         opacity: 1,
         fillOpacity: 1,
@@ -37,7 +39,7 @@ var map = L.map("mapid", {
       pointToLayer: function(feature, latlng) {
         return L.circleMarker(latlng);
       },
-      style: styleInfo,
+      style: markerInfo,
       onEachFeature: function(feature, layer) {
         layer.bindPopup(
           "Magnitude: " + feature.properties.mag + "<br>Depth: " + feature.geometry.coordinates[2]
