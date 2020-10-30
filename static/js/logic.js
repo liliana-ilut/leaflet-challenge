@@ -10,12 +10,15 @@ var map = L.map("mapid", {
     id: "light-v10",
     accessToken: API_KEY
   }).addTo(map);
+
+  
   
   // call the url--I chose all week eartquakes
   var url_query ="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
   d3.json(url_query, function(data){
     // check if any data is displayed using console.log
     console.log(data);
+    // create the marker info 
     function markerInfo(feature) {
       return {
         opacity: 1,
@@ -27,14 +30,14 @@ var map = L.map("mapid", {
         weight: 0.5
       };
     }
-  
+    // the radius will be based on the magnitude value
     function getRadius(magnitude) {
       if(magnitude === 0) {
         return 1;
       }
       return magnitude * 4;
     }
-
+// add the popup to the map
     L.geoJson(data, {
       pointToLayer: function(feature, latlng) {
         return L.circleMarker(latlng);
@@ -47,7 +50,7 @@ var map = L.map("mapid", {
       }
     }).addTo(map)
   
-  
+  // create color scheme for the circles
   function markerColor(mag) {
     if (mag <= 1) {
         return "#ADFF2F";
@@ -63,7 +66,7 @@ var map = L.map("mapid", {
         return "#FF0000";
     };
 };
-
+// create legend
     var legend = L.control({
       position: "bottomleft"
     });
