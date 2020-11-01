@@ -53,7 +53,7 @@ var map = L.map("map-id", {
       style: markerInfo,
       onEachFeature: function(feature, layer) {
         layer.bindPopup(
-          "<h3>" + feature.properties.place + "</h3><hr><p>" + new Date(feature.properties.time) + "</p>" + "<p>Richter magnitude scale: " + feature.properties.mag + "</p>"
+          "<h3>" + feature.properties.place + "</h3><hr><p>" + new Date(feature.properties.time) + "</p>" + "<p>Tsunami:  " + feature.properties.tsunami + "</p>" + "</p>" + "<p>Richter magnitude scale: " + feature.properties.mag + "</p>"
         );
       }
     }).addTo(map)
