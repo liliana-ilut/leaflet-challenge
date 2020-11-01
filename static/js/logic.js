@@ -59,15 +59,15 @@ var map = L.map("map-id", {
   
   // create color scheme for the circles
   function markerColor(mag) {
-    if (mag <= 1) {
+    if (mag <= 1.0) {
         return "#ADFF2F";
-    } else if (mag <= 2) {
+    } else if (mag <= 2.0) {
         return "#9ACD32";
-    } else if (mag <= 3) {
+    } else if (mag <= 3.0) {
         return "#FFFF00";
-    } else if (mag <= 4) {
+    } else if (mag <= 4.0) {
         return "#ffd700";
-    } else if (mag <= 5) {
+    } else if (mag <= 5.0) {
         return "#FFA500";
     } else {
         return "#FF0000";
