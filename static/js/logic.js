@@ -30,7 +30,8 @@ var map = L.map("map-id", {
       return {
         opacity: 1,
         fillOpacity: 1,
-        fillColor:markerColor(feature.geometry.coordinates[2]),
+        // fillColor:markerColor(feature.geometry.coordinates[2]),
+        fillColor:markerColor(feature.properties.mag),
         color: "#000000",
         radius: getRadius(feature.properties.mag),
         stroke: true,
@@ -61,13 +62,13 @@ var map = L.map("map-id", {
   function markerColor(mag) {
     if (mag <= 1.0) {
         return "#ADFF2F";
-    } else if (mag <= 2.0) {
+    } else if (mag <= 2.0 && mag > 1.0) {
         return "#9ACD32";
-    } else if (mag <= 3.0) {
+    } else if (mag <= 3.0 && mag > 2.0) {
         return "#FFFF00";
-    } else if (mag <= 4.0) {
+    } else if (mag <= 4.0 && mag > 3.0) {
         return "#ffd700";
-    } else if (mag <= 5.0) {
+    } else if (mag <= 5.0 && mag > 4.0) {
         return "#FFA500";
     } else {
         return "#FF0000";
