@@ -106,7 +106,7 @@ var map = L.map("map-id", {
 
     for (var i = 0; i < grades.length; i++) {
         from = grades [i];
-        to = grades[i+1]-1;
+        to = grades[i+1];
 
     labels.push(
         '<i style="background:' + colors[i] + '"></i> ' +
